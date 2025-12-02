@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to the Sakila Movie Database");
 
-        loadConnection("root", "yearup");
+        loadConnection(args[0], args[1]);
 
         System.out.print("Enter the last name of an actor/actress: ");
         userInput = keyboard.nextLine();
