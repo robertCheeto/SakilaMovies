@@ -20,11 +20,11 @@ public class UI {
             return;
         }
         System.out.println("\nActor ID \t First Name \t Last Name");
-        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+");
+        System.out.println("+-+-+-+-+-+-+-+-+-+-+-++-+-+-+-++-+-+-+-+");
         for (Actors actor : actors) {
-            System.out.printf("%d \t %s \t %s\n", actor.getActorID(), actor.getFirstName(), actor.getLastName());
+            System.out.printf("%d \t\t %s \t\t\t %s\n", actor.getActorID(), actor.getFirstName(), actor.getLastName());
         }
-        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+");
+        System.out.println("+-+-+-+-+-+-+-+-+-+-+-++-+-+-+-++-+-+-+-+\n\n");
     }
 
     public static void displayMovies(List<Movies> movies){
@@ -34,11 +34,11 @@ public class UI {
         }
 
         System.out.println("\nFilm ID \t Movie Title \t Release Year \t Duration \t Rating");
-        System.out.println("\n+-+-+-+-+-+-+-+-+-+-+-+");
+        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+");
         for (Movies movie : movies) {
             System.out.printf("%d \t %s \t %d \t %d \t %s\n", movie.getFilmID(), movie.getTitle(), movie.getReleaseYear(),
                     movie.getLength(), movie.getRating());
         }
-        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+");
+        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+\n\n");
     }
 }

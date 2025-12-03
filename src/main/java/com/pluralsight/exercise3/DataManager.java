@@ -38,18 +38,13 @@ public class DataManager {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, lastName);
             try (ResultSet results = statement.executeQuery()) {
-                System.out.println("\nListing Actors with the Last Name " + lastName);
-                System.out.println("\n+-+-+-+-+-+-+-+-+-+-+-+");
                 while (results.next()) {
                     int actorID = results.getInt("actor_id");
                     String fName = results.getString("first_name");
                     String lName = results.getString("last_name");
-                    System.out.println(fName + " " + lName);
-
                     Actors actor = new Actors(actorID, fName, lName);
                     actors.add(actor);
                 }
-                System.out.println("+-+-+-+-+-+-+-+-+-+-+-+");
             }
         } catch (SQLException e) {
             e.printStackTrace();
