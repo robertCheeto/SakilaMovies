@@ -1,29 +1,37 @@
 package com.pluralsight.exercise3;
 
-import org.apache.commons.dbcp2.BasicDataSource;
-
-import java.sql.*;
+import java.util.Scanner;
 
 public class MainEx3 {
-    private static final String url = "jdbc:mysql://127.0.0.1:3306/sakila";
-
+    private static final Scanner keyboard = new Scanner(System.in);
+    private static boolean isRunning = true;
     public static void main(String[] args) {
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl(url);
-        dataSource.setUsername(args[0]);
-        dataSource.setPassword(args[1]);
+        System.out.println("Welcome to the Sakila Movie Database");
 
-        try {
-            Connection connection = dataSource.getConnection();
-        } catch (SQLException e) {
-            System.out.println("Error when loading connection. Exiting application.");
-            e.printStackTrace();
+        String username = System.getenv("DB_USERNAME");
+        String password = System.getenv("DB_PASSWORD");
+
+        if (username == null || password == null) {
+            System.out.println("Username AND/OR Password Not set/correct.");
             System.exit(1);
         }
 
-        DataManager dataManager = new DataManager(dataSource);
+        DataManager dataManager = new DataManager(username, password);
 
-        List<Actors> actors = dataManager.getActorsByName();
+        while(isRunning) {
+            UI.displayMainMenu();
+            int userInput = keyboard.nextInt();
+            keyboard.nextLine();
 
+            switch (userInput) {
+                case 1 -> displayActors();
+                case 2 -> displayMovies();
+                case 99 -> isRunning = false;
+                default -> System.out.println("Enter a valid input");
+            }
+            System.out.println("Program shutting down...");
+            keyboard.close();
+            System.exit(0);
+        }
     }
 }
