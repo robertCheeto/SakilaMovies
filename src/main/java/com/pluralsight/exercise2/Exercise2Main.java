@@ -1,10 +1,10 @@
-package com.pluralsight;
+package com.pluralsight.exercise2;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import java.sql.*;
 import java.util.Scanner;
 
-public class Main {
+public class Exercise2Main {
     private static final String url = "jdbc:mysql://127.0.0.1:3306/sakila";
     private static Connection connection = null;
     private static final Scanner keyboard = new Scanner(System.in);
