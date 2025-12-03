@@ -39,5 +39,4 @@ public class AppController {
         List<Movies> movies = dataManager.getMoviesByActor();
         UI.displayMovies(movies);
     }
-
-} // end class
+}

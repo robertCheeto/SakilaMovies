@@ -2,11 +2,8 @@ package com.pluralsight.exercise3;
 
 import com.pluralsight.exercise3.models.*;
 import java.util.List;
-import java.util.Scanner;
 
 public class UI {
-
-
     public static void displayMainMenu(){
         System.out.println("1) Search for Actors (Last Name)");
         System.out.println("2) Search for Films (Actor Starred)");
