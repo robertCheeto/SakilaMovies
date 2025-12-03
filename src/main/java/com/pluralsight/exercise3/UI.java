@@ -5,8 +5,10 @@ import java.util.List;
 
 public class UI {
     public static void displayMainMenu(){
-        System.out.println("1) Search for Actors (Last Name)");
-        System.out.println("2) Search for Films (Actor Starred)");
+        System.out.println("1) List All Actors");
+        System.out.println("2) Search for Actors (Last Name)");
+        System.out.println("3) List All Films");
+        System.out.println("4) Search for Films (Actor Starred)");
         System.out.println("99) Exit Program");
         System.out.print("Enter choice here: ");
     }

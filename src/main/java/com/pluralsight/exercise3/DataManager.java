@@ -27,7 +27,28 @@ public class DataManager {
         }
     }
 
-    public List<Actors> getActorsByName() {
+    public List<Actors> getActors(){
+        List<Actors> actors = new ArrayList<>();
+
+        String query = "SELECT Actor_ID, First_Name, Last_Name FROM Actor";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            try (ResultSet results = statement.executeQuery()) {
+                while (results.next()) {
+                    int actorID = results.getInt("actor_id");
+                    String fName = results.getString("first_name");
+                    String lName = results.getString("last_name");
+                    Actors actor = new Actors(actorID, fName, lName);
+                    actors.add(actor);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return actors;
+    }
+
+    public List<Actors> getActorsByName(){
         List<Actors> actors = new ArrayList<>();
 
         System.out.print("Enter the last name of an actor/actress: ");
@@ -50,6 +71,30 @@ public class DataManager {
             e.printStackTrace();
         }
         return actors;
+    }
+
+    public List<Movies> getMovies(){
+        List<Movies> movies = new ArrayList<>();
+
+        String query = "SELECT Film_ID, Title, Release_Year, Length, Rating FROM Film";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            try (ResultSet results = statement.executeQuery()) {
+                while (results.next()) {
+                    int movieID = results.getInt("Film_ID");
+                    String movieTitle = results.getString("Title");
+                    int movieYear = results.getInt("Release_Year");
+                    int movieLength = results.getInt("Length");
+                    String movieRating = results.getString("Rating");
+
+                    Movies movie = new Movies(movieID, movieTitle, movieYear, movieLength, movieRating);
+                    movies.add(movie);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
     }
 
     public List<Movies> getMoviesByActor(){
